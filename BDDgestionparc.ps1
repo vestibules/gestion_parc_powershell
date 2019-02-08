@@ -58,3 +58,18 @@ else
         $ajouterprenom = Read-Host "Veuillez saisir le PRENOM de l'Utilisateur"
         $ajouteridlocal = Read-Host "Veuillez saisir l'ID du local d'affectation de l'Utilisateur"
         $ajouter = "INSERT INTO utilisateur (id_utlisateur,nom_utilisateur,prenom_utilisateur,id_local) VALUES (NULL,'$ajouternom','$ajouterprenom',$idlocal)"
+        $reqajouter = New-Object Mysql.Data.MysqlClient.MySqlCommand($ajouter,$conn)
+        }
+
+        if ($action -Like "*Supprimer*")
+        {
+        $supprimernom = Read-Host "Veuillez saisir le NOM D'USAGE de l'utilisateur"
+        $supprimerprenom = Read-Host "Veuillez saisir le PRENOM de l'utilisateur"
+        $supprimeridlocal = Read-Host "Veuillez saisir l'ID du local d'affectation de l'utilisateur"
+        $supprimer = "DELETE FROM utilisateur WHERE nom_utilisateur='$supprimernom' AND prenom_utilisateur='$supprimerprenom' AND id_local=$supprimeridlocal"
+        $reqsupprimer = New-Object Mysql.Data.MysqlClient.MySqlCommand($supprimer,$conn)
+        }
+    }
+}
+
+####
